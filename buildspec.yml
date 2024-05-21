@@ -2,9 +2,10 @@ version: 0.2
 
 env:
   variables:
-    AWS_ACCOUNT_ID: "891377163278"
-    AWS_REGION: "ap-southeast-2"
+    AWS_ACCOUNT_ID: "t0o7z0m4"
+    AWS_REGION: "us-east-1"  # 퍼블릭 리포지토리의 리전
     ECR_REPOSITORY: "min-repo-was"
+    REPOSITORY_URI: "public.ecr.aws/$AWS_ACCOUNT_ID/$ECR_REPOSITORY"
 
 phases:
   install:
@@ -16,9 +17,7 @@ phases:
 
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
-      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY
+      - echo Preparing to build Docker image...
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
 
