@@ -26,9 +26,8 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t min-repo-was .
-      - docker tag min-repo-was:latest $REPOSITORY_URI:latest
-      - docker tag min-repo-was:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t $REPOSITORY_URI:latest -f appDockerfile/Dockerfile .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
     commands:
