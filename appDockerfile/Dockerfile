@@ -1,5 +1,5 @@
 # 단계 1: 빌드 단계
-FROM gradle:7.3.3-jdk17 AS build
+FROM gradle:7.5-jdk17 AS build
 
 # 작업 디렉토리 설정
 WORKDIR /home/gradle/project
