@@ -7,8 +7,8 @@ WORKDIR /home/gradle/project
 # 필요한 파일들을 복사
 COPY . .
 
-# 프로젝트 빌드 (JAR 파일 생성)
-RUN gradle build --no-daemon
+# Gradle 데몬을 사용하여 빌드 (JAR 파일 생성)
+RUN gradle build --no-daemon --parallel --build-cache
 
 # 단계 2: 런타임 단계
 FROM openjdk:17
