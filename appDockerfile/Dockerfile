@@ -1,5 +1,8 @@
 # 단계 1: 빌드 단계
-FROM gradle:7.5-jdk17 AS build
+FROM --platform=linux/amd64 gradle:7.5.1-jdk17 AS build
+
+# QEMU를 위한 설정
+RUN apt-get update && apt-get install -y qemu-user-static
 
 # 작업 디렉토리 설정
 WORKDIR /home/gradle/project
@@ -7,11 +10,11 @@ WORKDIR /home/gradle/project
 # 필요한 파일들을 복사
 COPY . .
 
-# 프로젝트 빌드 (JAR 파일 생성)
-RUN gradle build --no-daemon
+# Gradle Wrapper 사용하여 빌드 (JAR 파일 생성)
+RUN ./gradlew build --no-daemon --stacktrace
 
 # 단계 2: 런타임 단계
-FROM openjdk:17
+FROM --platform=linux/amd64 openjdk:17
 
 # 작업 디렉토리 설정
 WORKDIR /app
