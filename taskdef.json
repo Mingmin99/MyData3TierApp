@@ -7,11 +7,9 @@
       "cpu": 0,
       "portMappings": [
         {
-          "name": "8080",
           "containerPort": 8080,
           "hostPort": 8080,
-          "protocol": "tcp",
-          "appProtocol": "http"
+          "protocol": "tcp"
         }
       ],
       "essential": true,
@@ -27,8 +25,7 @@
           "awslogs-group": "/ecs/was-task",
           "awslogs-region": "ap-southeast-2",
           "awslogs-stream-prefix": "ecs"
-        },
-        "secretOptions": []
+        }
       },
       "systemControls": []
     }
