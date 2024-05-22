@@ -1,5 +1,5 @@
 # 단계 1: 빌드 단계
-FROM gradle:7.5.1-jdk17 AS build
+FROM gradle:7.5-jdk17 AS build
 
 # 작업 디렉토리 설정
 WORKDIR /home/gradle/project
@@ -7,8 +7,8 @@ WORKDIR /home/gradle/project
 # 필요한 파일들을 복사
 COPY . .
 
-# Gradle Wrapper 사용하여 빌드 (JAR 파일 생성)
-RUN ./gradlew build --no-daemon --stacktrace
+# 프로젝트 빌드 (JAR 파일 생성)
+RUN gradle build --no-daemon
 
 # 단계 2: 런타임 단계
 FROM openjdk:17
