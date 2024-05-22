@@ -43,12 +43,12 @@ phases:
         aws deploy create-deployment \
           --application-name AppECS-app-cluster-was-service \
           --deployment-group-name DgpECS-app-cluster-was-service \
-          --revision "{
-            \"revisionType\": \"AppSpecContent\",
-            \"appSpecContent\": {
-              \"content\": \"version: 0.0\nResources:\n  - TargetService:\n      Type: AWS::ECS::Service\n      Properties:\n        TaskDefinition: $TASK_DEFINITION_ARN\n        LoadBalancerInfo:\n          ContainerName: was-container\n          ContainerPort: 8080\n\"
+          --revision '{
+            "revisionType": "AppSpecContent",
+            "appSpecContent": {
+              "content": "'"$(cat appspec.yml | jq -Rs .)"'"
             }
-          }"
+          }'
 
 artifacts:
   files:
