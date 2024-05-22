@@ -43,7 +43,12 @@ phases:
         aws deploy create-deployment \
           --application-name AppECS-app-cluster-was-service \
           --deployment-group-name DgpECS-app-cluster-was-service \
-          --revision file://appspec.yml
+          --revision "{
+            \"revisionType\": \"AppSpecContent\",
+            \"appSpecContent\": {
+              \"content\": \"$(cat appspec.yml)\"
+            }
+          }"
 
 artifacts:
   files:
