@@ -4,13 +4,12 @@ env:
   variables:
     AWS_ACCOUNT_ID: "891377163278"  # AWS 계정 ID
     AWS_REGION: "ap-southeast-2"    # 프라이빗 ECR 리포지토리의 리전
-    ECR_REPOSITORY: "min-repo-was"  # ECR 리포지토리 이름
-    REPOSITORY_URI: "891377163278.dkr.ecr.ap-southeast-2.amazonaws.com/min-repo-was"  # 프라이빗 ECR URI
+    ECR_REPOSITORY: "min-repo-web"  # ECR 리포지토리 이름
+    REPOSITORY_URI: "891377163278.dkr.ecr.ap-southeast-2.amazonaws.com/min-repo-web"  # 프라이빗 ECR URI
 
 phases:
   install:
     runtime-versions:
-      java: corretto17
       docker: 23
     commands:
       - echo Installing dependencies...
@@ -28,7 +27,7 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker buildx build --platform linux/amd64 -t $REPOSITORY_URI:latest -f appDockerfile/Dockerfile --load .
+      - docker buildx build --platform linux/amd64 -t $REPOSITORY_URI:latest -f appDockerfile/Dockerfile .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
@@ -36,13 +35,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Writing image definitions file...
-      - printf '[{"name":"container-name","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files:
     - imagedefinitions.json
-
-cache:
-  paths:
-    - '/root/.gradle/**/*'
