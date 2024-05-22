@@ -11,7 +11,7 @@ COPY . .
 RUN gradle build --no-daemon
 
 # 단계 2: 런타임 단계
-FROM openjdk:17
+FROM --platform=$TARGETPLATFORM openjdk:17
 
 # 작업 디렉토리 설정
 WORKDIR /app
