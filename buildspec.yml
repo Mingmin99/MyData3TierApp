@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   variables:
-    AWS_ACCOUNT_ID: "891377163278"  # AWS 계정 ID
-    AWS_REGION: "ap-southeast-2"    # 프라이빗 ECR 리포지토리의 리전
-    ECR_REPOSITORY: "min-repo-web"  # ECR 리포지토리 이름
-    REPOSITORY_URI: "891377163278.dkr.ecr.ap-southeast-2.amazonaws.com/min-repo-web"  # 프라이빗 ECR URI
+    AWS_ACCOUNT_ID: "891377163278"
+    AWS_REGION: "ap-southeast-2"
+    ECR_REPOSITORY: "min-repo-web"
+    REPOSITORY_URI: "891377163278.dkr.ecr.ap-southeast-2.amazonaws.com/min-repo-web"
 
 phases:
   install:
@@ -35,7 +35,3 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-
-artifacts:
-  files:
-    - imagedefinitions.json
