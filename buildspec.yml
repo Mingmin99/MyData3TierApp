@@ -13,32 +13,32 @@ phases:
       java: corretto17
       docker: 23
     commands:
-      - echo Installing dependencies...
+      - echo "Installing dependencies..."
 
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
+      - echo "Logging in to Amazon ECR..."
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
-      - echo Preparing to build Docker image...
+      - echo "Preparing to build Docker image..."
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
 
   build:
     commands:
-      - echo Building the Docker image...
+      - echo "Building the Docker image..."
       - docker build -t $REPOSITORY_URI:latest -t $REPOSITORY_URI:$IMAGE_TAG -f appDockerfile/Dockerfile .
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
     commands:
-      - echo Updating task definition...
+      - echo "Updating task definition..."
       - sed -i 's|IMAGE_URI|'"$REPOSITORY_URI:$IMAGE_TAG"'|g' taskdef.json
       - TASK_DEFINITION_ARN=$(aws ecs register-task-definition --cli-input-json file://taskdef.json --query 'taskDefinition.taskDefinitionArn' --output text)
-      - echo Task definition registered: $TASK_DEFINITION_ARN
-      - echo Writing AppSpec file...
+      - echo "Task definition registered: $TASK_DEFINITION_ARN"
+      - echo "Writing AppSpec file..."
       - sed 's|LATEST_TASK_DEFINITION_ARN_PLACEHOLDER|'"$TASK_DEFINITION_ARN"'|g' appspec-template.yml > appspec.yml
-      - echo Triggering deployment...
+      - echo "Triggering deployment..."
       - |
         aws deploy create-deployment \
           --application-name AppECS-app-cluster-was-service \
@@ -46,7 +46,7 @@ phases:
           --revision "{
             \"revisionType\": \"AppSpecContent\",
             \"appSpecContent\": {
-              \"content\": \"$(cat appspec.yml)\"
+              \"content\": \"version: 0.0\nResources:\n  - TargetService:\n      Type: AWS::ECS::Service\n      Properties:\n        TaskDefinition: $TASK_DEFINITION_ARN\n        LoadBalancerInfo:\n          ContainerName: was-container\n          ContainerPort: 8080\n\"
             }
           }"
 
