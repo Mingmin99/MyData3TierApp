@@ -60,18 +60,10 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-    @RequestMapping("/assets")
-    public ModelAndView manageAssets(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("username") != null) {
-            ModelAndView mav = new ModelAndView("assets"); // 자산 관리 페이지로 이동
-            mav.addObject("username", session.getAttribute("username"));
-            mav.addObject("userid", session.getAttribute("userid")); // userid 추가
-            return mav;
-        } else {
-            return new ModelAndView("redirect:/login"); // 로그인 페이지로 리다이렉트
-        }
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok().build();
     }
-
 
 }

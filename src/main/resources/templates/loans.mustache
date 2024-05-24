@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자산 관리</title>
-    <link rel="stylesheet" href="../css/assets.css">
+    <title>대출 조건 관리</title>
+    <link rel="stylesheet" href="../css/loans.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div class="header">
-    <h1>{{username}}님의 자산 관리</h1>
+    <h1>{{username}}님의 대출 조건 관리</h1>
     <nav class="navbar">
         <ul>
             <li><a href="/assets">자산 관리</a></li>
@@ -33,54 +33,59 @@
 </div>
 <div class="main-content">
     <h2>환영합니다, {{username}} (ID: {{userid}})님!</h2>
-    <p>여기에서 자산 관리를 하실 수 있습니다.</p>
+    <p>여기에서 대출 조건을 관리하실 수 있습니다.</p>
 
-    <h2>자산 목록</h2>
-    <table class="asset-table">
+    <h2>대출 조건 목록</h2>
+    <table class="loan-table">
         <thead>
         <tr>
-            <th>자산 이름</th>
-            <th>자산 가치</th>
-            <th>자산 유형</th>
+            <th>대출 유형</th>
+            <th>이자율</th>
+            <th>대출 금액</th>
+            <th>기간</th>
+            <th>상태</th>
             <th>생성 일자</th>
         </tr>
         </thead>
-        <tbody id="asset-tbody">
+        <tbody id="loan-tbody">
         </tbody>
     </table>
 
-    <h2>자산 분포</h2>
+    <h2>대출 조건 분포</h2>
     <div class="chart-container">
         <div>
-            <canvas id="assetBarChart"></canvas>
+            <canvas id="loanBarChart"></canvas>
         </div>
         <div>
-            <canvas id="assetPieChart"></canvas>
+            <canvas id="loanPieChart"></canvas>
         </div>
         <div>
-            <canvas id="assetLineChart"></canvas>
+            <canvas id="loanLineChart"></canvas>
         </div>
     </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const assetsData = JSON.parse('{{&assetsJson}}');
+        const loanConditionsData = JSON.parse('{{&loanConditionsJson}}');
 
-        const assetNames = assetsData.map(asset => asset.assetName);
-        const assetValues = assetsData.map(asset => asset.assetValue);
+        const loanTypes = loanConditionsData.map(condition => condition.loanType);
+        const loanAmounts = loanConditionsData.map(condition => condition.loanAmount);
+        const interestRates = loanConditionsData.map(condition => condition.interestRate);
 
-        // 자산 목록 테이블 렌더링
-        const assetTbody = document.getElementById('asset-tbody');
-        assetsData.forEach(asset => {
+        // 대출 조건 목록 테이블 렌더링
+        const loanTbody = document.getElementById('loan-tbody');
+        loanConditionsData.forEach(condition => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${asset.assetName}</td>
-                <td>${formatCurrency(asset.assetValue)} 원</td>
-                <td>${asset.assetType}</td>
-                <td>${formatDate(asset.createdAt)}</td>
+                <td>${condition.loanType}</td>
+                <td>${condition.interestRate.toFixed(2)}%</td>
+                <td>${formatCurrency(condition.loanAmount)} 원</td>
+                <td>${condition.term}개월</td>
+                <td>${condition.status}</td>
+                <td>${formatDate(condition.createdAt)}</td>
             `;
-            assetTbody.appendChild(row);
+            loanTbody.appendChild(row);
         });
 
         // 숫자 포맷팅 함수
@@ -100,14 +105,14 @@
         }
 
         // Bar Chart
-        const barCtx = document.getElementById('assetBarChart').getContext('2d');
+        const barCtx = document.getElementById('loanBarChart').getContext('2d');
         new Chart(barCtx, {
             type: 'bar',
             data: {
-                labels: assetNames,
+                labels: loanTypes,
                 datasets: [{
-                    label: '자산 가치',
-                    data: assetValues,
+                    label: '대출 금액',
+                    data: loanAmounts,
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
@@ -123,14 +128,14 @@
         });
 
         // Pie Chart
-        const pieCtx = document.getElementById('assetPieChart').getContext('2d');
+        const pieCtx = document.getElementById('loanPieChart').getContext('2d');
         new Chart(pieCtx, {
             type: 'pie',
             data: {
-                labels: assetNames,
+                labels: loanTypes,
                 datasets: [{
-                    label: '자산 가치',
-                    data: assetValues,
+                    label: '대출 금액',
+                    data: loanAmounts,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -153,14 +158,14 @@
         });
 
         // Line Chart
-        const lineCtx = document.getElementById('assetLineChart').getContext('2d');
+        const lineCtx = document.getElementById('loanLineChart').getContext('2d');
         new Chart(lineCtx, {
             type: 'line',
             data: {
-                labels: assetNames,
+                labels: loanTypes,
                 datasets: [{
-                    label: '자산 가치',
-                    data: assetValues,
+                    label: '이자율',
+                    data: interestRates,
                     fill: false,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     tension: 0.1

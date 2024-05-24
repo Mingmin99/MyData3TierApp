@@ -1,0 +1,212 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.navbar li {
+    margin: 0 10px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar li a:hover, .navbar li a:focus {
+    background-color: #555;
+    color: #fff;
+}
+
+.main-content {
+    margin-top: 60px; /* 헤더와의 충분한 간격 유지 */
+    padding: 20px; /* 내용과 경계 사이의 패딩 */
+    background-color: #ffffff; /* 배경색 */
+    border-radius: 8px; /* 모서리 둥글게 처리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    width: calc(100% - 300px); /* 사이드바 너비를 고려한 총 너비 */
+    margin-left: 20px; /* 왼쪽 여백 */
+    margin-right: 20px; /* 오른쪽 여백 */
+}
+
+.main-content h2 {
+    margin-top: 100px;
+    font-size: 24px; /* 제목 크기 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 15px; /* 제목과 내용 사이의 여백 */
+}
+
+.main-content p {
+    font-size: 16px; /* 문단 텍스트 크기 */
+    line-height: 1.5; /* 줄 간격 */
+    color: #666; /* 텍스트 색상 */
+    margin-bottom: 20px; /* 문단과 다음 섹션 사이의 여백 */
+}
+
+.asset-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.asset-table thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.asset-table th, .asset-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.asset-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.asset-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.asset-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.asset-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+}
+
+.asset-table td {
+    color: #333;
+}
+
+.asset-table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.asset-table th, .asset-table td {
+    border-bottom: 1px solid #ddd;
+}
+
+.asset-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+canvas {
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*-------------------------------------------------------------*/
+
+.sidebar {
+    background-color: #eee;
+    padding: 20px;
+    width: 250px;
+    position: fixed;
+    right: 0;
+    top: 60px; /* Height of the header */
+    bottom: 0;
+    overflow-y: auto;
+}
+
+
+.sidebarTitle {
+    margin-top: 0; /* 상단 여백 줄이기 */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a,
+.sidebar ul li button {
+    display: block;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li button:hover {
+    background-color: #45a249;
+}
+
+.logout-button {
+    background-color: #d9534f !important; /* 로그아웃 버튼을 붉은색으로 표시 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #c9302c;
+}
+/*------------------------------------*/
+#assetBarChart, #assetPieChart, #assetLineChart {
+    margin: 20px 0;
+}
+
+#assetBarChart {
+    width: 900px !important;
+    height: 300px;
+    box-sizing: border-box;
+}
+
+#assetPieChart {
+    width: 500px !important;
+    height: 500px !important;
+    box-sizing: border-box;
+}
+
+#assetLineChart {
+    width: 900px !important;
+    height: 400px !important;
+    box-sizing: border-box;
+}

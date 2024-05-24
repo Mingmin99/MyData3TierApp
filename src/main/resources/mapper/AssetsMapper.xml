@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mydata.dao.AssetsMapper">
+
+    <resultMap id="AssetMap" type="com.example.mydata.dto.Asset">
+        <id property="id" column="id"/>
+        <result property="userid" column="userid"/>
+        <result property="assetName" column="asset_name"/>
+        <result property="assetValue" column="asset_value"/>
+        <result property="assetType" column="asset_type"/>
+        <result property="createdAt" column="created_at" javaType="java.sql.Timestamp"/>
+    </resultMap>
+
+    <select id="getAssetsByUserId" resultMap="AssetMap" parameterType="String">
+        SELECT
+            id,
+            userid,
+            asset_name,
+            asset_value,
+            asset_type,
+            created_at
+        FROM
+            Assets
+        WHERE
+            userid = #{userid}
+    </select>
+
+</mapper>
