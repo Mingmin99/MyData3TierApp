@@ -8,7 +8,7 @@ WORKDIR /home/gradle/project
 COPY . .
 
 # 프로젝트 빌드 (JAR 파일 생성)
-RUN gradle build --no-daemon
+RUN gradle build
 
 # 단계 2: 런타임 단계
 FROM openjdk:17
