@@ -257,7 +257,7 @@ body {
 .news-section article {
     margin-bottom: 25px; /* 기사 간의 간격 증가 */
     padding-bottom: 15px; /* 기사 하단 패딩 추가 */
-    border-bottom: 1px solid #efefef; /* 기사 하단 경계선 추가 */
+    border-bottom: 1px solid #e0e0e0; /* 기사 하단 경계선 추가 */
     transition: transform 0.3s ease; /* 호버 애니메이션 추가 */
 }
 
