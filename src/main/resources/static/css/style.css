@@ -288,7 +288,7 @@ body {
 
 .news-section article a:hover {
     text-decoration: underline;
-    color: #c0392b; /* 호버 시 색상 변경 */
+    color: #ce3e2f; /* 호버 시 색상 변경 */
 }
 
 .additional-info {
