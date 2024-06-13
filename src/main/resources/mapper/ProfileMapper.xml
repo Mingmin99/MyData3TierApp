@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mydata.dao.ProfileMapper">
+
+    <select id="getUserById" parameterType="string" resultType="com.example.mydata.dto.User">
+        SELECT * FROM Users WHERE id = #{userId}
+    </select>
+
+    <select id="getAssetsByUserId" resultMap="com.example.mydata.dao.AssetsMapper.AssetMap" parameterType="string">
+        SELECT * FROM Assets WHERE userid = #{userId}
+    </select>
+
+    <select id="getLoansByUserId" resultMap="com.example.mydata.dao.LoanConditionMapper.LoanConditionMap" parameterType="string">
+        SELECT * FROM LoanConditions WHERE userid = #{userId}
+    </select>
+
+    <select id="getNoticesByUserId" parameterType="string" resultType="com.example.mydata.dto.Notice">
+        SELECT * FROM Notices WHERE user_id = #{userId}
+    </select>
+
+</mapper>
+

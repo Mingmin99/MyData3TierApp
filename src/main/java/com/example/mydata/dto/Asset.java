@@ -11,20 +11,6 @@ public class Asset {
     private String assetType;
     private Timestamp createdAt;
 
-    // 기본 생성자
-    public Asset() {
-    }
-
-    // 모든 필드를 포함하는 생성자
-    public Asset(int id, String userid, String assetName, int assetValue, String assetType, Timestamp createdAt) {
-        this.id = id;
-        this.userid = userid;
-        this.assetName = assetName;
-        this.assetValue = assetValue;
-        this.assetType = assetType;
-        this.createdAt = createdAt;
-    }
-
     // Getters and Setters
     public int getId() {
         return id;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mydata.dao.NoticeMapper">
+
+    <!-- NoticeResult 맵핑 설정 -->
+    <resultMap id="NoticeResult" type="com.example.mydata.dto.Notice">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+
+    <!-- createNotice 쿼리 -->
+    <insert id="createNotice" parameterType="com.example.mydata.dto.Notice">
+        INSERT INTO Notices (user_id, title, content)
+        VALUES (#{userId}, #{title}, #{content})
+    </insert>
+
+    <!-- getAllNoticesByUserId 쿼리 -->
+    <select id="getAllNoticesByUserId" resultMap="NoticeResult" parameterType="String">
+        SELECT id, user_id, title, content, created_at
+        FROM Notices
+        WHERE user_id = #{userId}
+        ORDER BY created_at DESC
+    </select>
+</mapper>

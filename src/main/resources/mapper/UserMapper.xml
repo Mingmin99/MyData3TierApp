@@ -3,12 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mydata.dao.UserMapper">
-        <resultMap id="UserResult" type="com.example.mydata.dto.User">
-            <id column="id" property="id"/>
-            <result column="username" property="username"/>
-            <result column="password" property="password"/>
-            <result column="phoneNumber" property="phoneNumber"/>  <!-- 이전에는 email이었던 부분을 number로 수정 -->
-        </resultMap>
+    <resultMap id="UserResult" type="com.example.mydata.dto.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phoneNumber" property="phoneNumber"/>
+        <result column="email" property="email"/>
+        <result column="address" property="address"/>
+        <result column="gender" property="gender"/>
+        <result column="birthdate" property="birthdate" javaType="java.sql.Date"/>
+        <result column="createdAt" property="createdAt" javaType="java.sql.Timestamp"/>
+    </resultMap>
+
     <select id="loginUser" parameterType="HashMap" resultType="com.example.mydata.dto.User">
         SELECT *
         FROM Users
@@ -16,11 +22,11 @@
           AND password = #{password}
     </select>
 
-
     <select id="findAll" resultMap="UserResult">
         SELECT *
         FROM Users
     </select>
+
     <select id="findByUsername" resultMap="UserResult" parameterType="String">
         SELECT *
         FROM Users
@@ -28,7 +34,7 @@
     </select>
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO Users (id, username, password, phonenumber) VALUES (#{id}, #{username}, #{password},
-        #{phonenumber})  <!-- 이전에는 email이었던 부분을 number로 수정 -->
+        INSERT INTO Users (id, username, password, phonenumber, email, address, gender, birthdate, created_at)
+        VALUES (#{id}, #{username}, #{password}, #{phoneNumber}, #{email}, #{address}, #{gender}, #{birthdate}, #{createdAt})
     </insert>
 </mapper>

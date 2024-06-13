@@ -24,14 +24,20 @@ dependencies {
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Prometheus Micrometer 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    // 기타 의존성
 
-//    s3추가
-//    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.121'
+
+    // s3추가
+    // implementation 'com.amazonaws:aws-java-sdk-s3:1.12.121'
 }
-
-
-
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootRun {
+    systemProperty "spring.profiles.active", System.getProperty("spring.profiles.active")
 }

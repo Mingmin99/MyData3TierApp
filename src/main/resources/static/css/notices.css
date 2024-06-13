@@ -1,0 +1,156 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 1500px;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.navbar li {
+    margin: 0 10px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar li a:hover, .navbar li a:focus {
+    background-color: #555;
+    color: #fff;
+}
+
+.main-content {
+    height: 1000px;
+    margin-top: 80px; /* 헤더와의 충분한 간격 유지 */
+    padding: 20px; /* 내용과 경계 사이의 패딩 */
+    background-color: #ffffff; /* 배경색 */
+    border-radius: 8px; /* 모서리 둥글게 처리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    width: calc(100% - 40px); /* 양쪽 여백 고려한 너비 */
+    margin: 60px auto; /* 페이지 가운데 정렬 */
+}
+
+.main-content h2 {
+    margin-top: 80px;
+    font-size: 24px; /* 제목 크기 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 15px; /* 제목과 내용 사이의 여백 */
+}
+
+#inquiry-form {
+    margin-bottom: 10px; /* 폼과 다음 섹션 사이의 여백 */
+}
+
+#inquiry-form input[type="text"],
+#inquiry-form textarea {
+    width: 90%; /* 너비 100% */
+    padding: 10px; /* 내부 패딩 */
+    margin-bottom: 10px; /* 하단 여백 */
+    border: 1px solid #ccc; /* 테두리 색상 */
+    border-radius: 4px; /* 모서리 둥글게 */
+}
+
+.notice-insert-button {
+    background-color: #D0A616; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none; /* 테두리 없음 */
+    padding: 10px 150px; /* 내부 패딩 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 마우스 커서 변경 */
+    font-size: 15px; /* 텍스트 크기 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
+}
+
+.notice-insert-button:hover {
+    background-color: #b08e14; /* 호버 시 배경색 */
+}
+
+
+
+.notices-table {
+    width: 100%; /* 테이블 너비 */
+    border-collapse: collapse; /* 테두리 겹침 방지 */
+    margin-top: 20px; /* 상단 여백 */
+    background-color: #fff; /* 배경색 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.notices-table thead {
+    background-color: #D0A616; /* 테이블 헤더 배경색 */
+    color: #413f3f; /* 텍스트 색상 */
+}
+
+.notices-table th, .notices-table td {
+    padding: 12px 15px; /* 내부 패딩 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.notices-table tbody tr {
+    border-bottom: 1px solid #ddd; /* 하단 테두리 */
+}
+
+.notices-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* 짝수 행 배경색 */
+}
+
+.notices-table tbody tr:hover {
+    background-color: #f1f1f1; /* 호버 시 배경색 */
+}
+
+.notices-table th {
+    background-color: #D0A616; /* 테이블 헤더 배경색 */
+    color: #413f3f; /* 텍스트 색상 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.notices-table td {
+    color: #333; /* 텍스트 색상 */
+}
+
+.notices-table {
+    border-radius: 8px; /* 모서리 둥글게 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+}
+
+.notices-table th, .notices-table td {
+    border-bottom: 1px solid #ddd; /* 하단 테두리 */
+}
+
+.notices-table tbody tr:last-child td {
+    border-bottom: none; /* 마지막 행 하단 테두리 제거 */
+}
+
+canvas {
+    margin-top: 20px; /* 상단 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}

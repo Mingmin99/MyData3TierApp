@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지/문의하기</title>
+    <link rel="stylesheet" href="../css/notices.css">
+</head>
+<body>
+<div class="header">
+    <h1>공지/문의하기</h1>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">홈</a>
+            <li><a href="/assets">자산 관리</a></li>
+            <li><a href="/loans">대출 조건</a></li>
+            <li><a href="/notices">문의하기</a></li>
+            <li><a href="/profile">마이 페이지</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="main-content">
+    <h2>문의하기</h2>
+    <form action="/notices" method="post" id="inquiry-form">
+        <input type="text" id="title" name="title" placeholder="제목" required>
+        <textarea id="content" name="content" placeholder="내용" required></textarea>
+    </form>
+    <button type="submit" class="notice-insert-button">작성</button>
+
+    <h2>문의 목록</h2>
+    <table class="notices-table">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성일자</th>
+        </tr>
+        </thead>
+        <tbody id="notices-tbody">
+        {{#notices}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{content}}</td>
+                <td>{{createdAt}}</td>
+            </tr>
+        {{/notices}}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('inquiry-form');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new URLSearchParams(new FormData(form)).toString();
+
+            fetch('/notices', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+                    .then(response => response.text())
+                    .then(() => {
+                        loadNotices();
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+        });
+
+        function loadNotices() {
+            fetch('/notices')
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById('notices-tbody');
+                        tbody.innerHTML = '';
+                        data.forEach((inquiry, index) => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${inquiry.title}</td>
+                        <td>${inquiry.content}</td>
+                        <td>${new Date(inquiry.createdAt).toLocaleString()}</td>
+                    `;
+                            tbody.appendChild(row);
+                        });
+                    });
+        }
+
+        loadNotices();
+    });
+</script>
+</body>
+</html>

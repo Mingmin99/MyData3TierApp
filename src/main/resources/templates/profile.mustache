@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이 페이지</title>
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+<div class="header">
+    <h1>마이 페이지</h1>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">홈</a></li>
+            <li><a href="/assets">자산 관리</a></li>
+            <li><a href="/loans">대출 조건</a></li>
+            <li><a href="/notices">문의하기</a></li>
+            <li><a href="/profile">마이 페이지</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="main-content">
+    <h2>사용자 정보</h2>
+    <div class="user-info">
+        <img src="/image/userprofile.png" alt="프로필 사진" class="profile-image">
+        <table class="user-table">
+            <tr>
+                <th>사용자 ID</th>
+                <td>{{user.id}}</td>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <td>{{user.username}}</td>
+            </tr>
+            <tr>
+                <th>전화번호</th>
+                <td>{{user.phoneNumber}}</td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <th>주소</th>
+                <td>{{user.address}}</td>
+            </tr>
+            <tr>
+                <th>성별</th>
+                <td>{{user.gender}}</td>
+            </tr>
+            <tr>
+                <th>생년월일</th>
+                <td>{{user.birthdate}}</td>
+            </tr>
+        </table>
+        <button onclick="location.href='/edit-profile'">프로필 편집</button>
+    </div>
+
+    <h2>비밀번호 변경</h2>
+    <div class="change-password">
+        <form action="/change-password" method="POST">
+            <label for="current-password">현재 비밀번호</label>
+            <input type="password" id="current-password" name="current-password" required>
+            <label for="new-password">새 비밀번호</label>
+            <input type="password" id="new-password" name="new-password" required>
+            <button type="submit">변경</button>
+        </form>
+    </div>
+
+    <h2>알림</h2>
+    <div class="notifications">
+        <ul>
+            {{#notifications}}
+                <li>{{message}} - {{timestamp}}</li>
+            {{/notifications}}
+        </ul>
+    </div>
+
+    <h2>설정</h2>
+    <div class="settings">
+        <button onclick="location.href='/settings'">설정 변경</button>
+    </div>
+
+    <h2>즐겨찾기</h2>
+    <div class="favorites">
+        <ul>
+            {{#favorites}}
+                <li><a href="{{url}}">{{name}}</a></li>
+            {{/favorites}}
+        </ul>
+    </div>
+
+    <h2>문의 및 피드백</h2>
+    <div class="feedback">
+        <form action="/feedback" method="POST">
+            <label for="feedback">문의 내용</label>
+            <textarea id="feedback" name="feedback" required></textarea>
+            <button type="submit">제출</button>
+        </form>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 MyData 서비스. All rights reserved.</p>
+</footer>
+</body>
+</html>

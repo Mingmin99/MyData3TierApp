@@ -45,6 +45,65 @@ body {
     color: #fff;
 }
 
+.menu-bar {
+    width: 100%;
+    margin: 10px;
+    margin-left: -1px;
+    /*background-color: #EEE8A9; !* 배경색 설정 *!*/
+    background-image: linear-gradient(180deg, #A9AABC 0%, #A9AABC 100%);
+    border-radius: 10px; /* 모서리 둥글게 만들기 */
+}
+
+/* Style the row within the menu bar */
+.menu-bar .row {
+    display: flex;
+    justify-content: space-between; /* 아이템 사이의 간격을 균일하게 조절 */
+}
+
+/* Style the menu item container */
+.menu-bar .col {
+    text-align: center;
+    padding: 10px; /* 내부 여백 설정 */
+    flex: 1; /* 아이템이 동일한 너비를 갖도록 함 */
+}
+
+/* Style the menu icons */
+.menu-icon {
+    width: 90px; /* 아이콘의 크기 설정 */
+    height: 90px;
+}
+
+/* Define a bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px); /* 이동 거리 및 시간을 조절하여 원하는 바운스 효과를 얻을 수 있습니다. */
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Apply the bounce animation to .menu-item */
+.menu-item {
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    animation: bounce 0.5s ease; /* 애니메이션을 한 번만 재생하도록 설정 */
+    animation-fill-mode: forwards; /* 애니메이션 종료 시 마지막 상태 유지 */
+}
+
+/* Add a hover effect on menu items */
+.menu-item:hover {
+    background-color: #faf9f9; /* 호버 상태 배경색 설정 */
+    border-radius: 5px; /* 호버 상태에서 모서리 둥글게 만들기 */
+    transition: background-color 0.3s; /* 부드러운 색상 전환을 위한 트랜지션 추가 */
+}
+
 .main-content {
     margin-top: 60px; /* 헤더와의 충분한 간격 유지 */
     padding: 20px; /* 내용과 경계 사이의 패딩 */
@@ -52,8 +111,8 @@ body {
     border-radius: 8px; /* 모서리 둥글게 처리 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
     width: calc(100% - 300px); /* 사이드바 너비를 고려한 총 너비 */
-    margin-left: 20px; /* 왼쪽 여백 */
-    margin-right: 310px; /* 사이드바 너비를 고려한 오른쪽 여백 */
+    /*margin-left: 20px; !* 왼쪽 여백 *!*/
+    /*margin-right: 310px; !* 사이드바 너비를 고려한 오른쪽 여백 *!*/
 }
 
 .main-content h2 {
@@ -68,35 +127,17 @@ body {
     line-height: 1.5; /* 줄 간격 */
     color: #666; /* 텍스트 색상 */
     margin-bottom: 20px; /* 문단과 다음 섹션 사이의 여백 */
+
+
 }
 
-.additional-info {
-    background: #f8f8f8; /* 추가 정보 배경색 */
-    padding: 15px; /* 추가 정보 내부 패딩 */
-    border-radius: 8px; /* 모서리 둥글게 처리 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 미묘한 그림자 효과 */
-}
+#homemydata-image {
+    width: 100%; /* 적절한 크기로 조정 */
+    display: block; /* Makes the image an inline-block element */
+    height: auto; /* Maintains the aspect ratio */
+    margin-top: 70px;
+    border-radius: 10px; /* 모서리 둥글게 처리 */
 
-.additional-info h3 {
-    font-size: 20px; /* 소제목 크기 */
-    color: #333; /* 소제목 색상 */
-    margin-bottom: 10px; /* 소제목과 리스트 사이의 여백 */
-}
-
-.additional-info ul {
-    list-style-type: none; /* 리스트 스타일 제거 */
-    padding-left: 0; /* 리스트 왼쪽 패딩 제거 */
-}
-
-.additional-info li {
-    font-size: 16px; /* 리스트 아이템 텍스트 크기 */
-    padding: 8px 0; /* 리스트 아이템 상하 패딩 */
-    border-bottom: 1px solid #e0e0e0; /* 하단 경계선 */
-    color: #555; /* 리스트 아이템 텍스트 색상 */
-}
-
-.additional-info li:last-child {
-    border-bottom: none; /* 마지막 아이템의 하단 경계선 제거 */
 }
 
 .sidebar {
@@ -130,12 +171,13 @@ body {
     align-content: center;
     border-radius: 4px;
     background-color: #fff;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .login-form button, .signup-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007A52;
+    color: #fff;
+!important;
     border: none;
     padding: 12px 20px;
     border-radius: 4px;
@@ -146,29 +188,16 @@ body {
 }
 
 .login-form button:hover, .signup-button:hover {
-    background-color: #45a249;
+    background-color: #007A52;
 }
 
 .signup-button {
-    background-color: #007bff;
+    background-color: #4c60af;
     text-align: center;
 }
 
 .signup-button:hover {
-    background-color: #0056b3;
-}
-
-.additional-info ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.additional-info li {
-    background-color: #fff;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #4c60af;
 }
 
 #welcome-area {
@@ -180,5 +209,130 @@ body {
 #welcome-message {
     font-size: 25px;
     font-weight: bold;
-    color: #4CAF50;
+    color: #413f3f;
+}
+
+#welcome-image {
+    width: 150px; /* 적절한 크기로 조정 */
+    height: auto;
+    display: block; /* 이미지를 블록 요소로 변경 */
+    margin: 20px auto; /* 상하 여백과 가운데 정렬 */
+}
+
+.interest-rates {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.interest-rates h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.news-section {
+    background: #ffffff; /* 밝은 배경색으로 변경 */
+    padding: 20px; /* 패딩을 조금 더 넉넉하게 */
+    border-radius: 10px; /* 모서리를 더 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 더 진한 그림자 효과 */
+    margin-bottom: 30px; /* 섹션 간의 간격을 더 넓게 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 애니메이션 추가 */
+}
+
+.news-section:hover {
+    transform: translateY(-5px); /* 살짝 위로 올라가는 효과 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자를 더 진하게 */
+}
+
+.news-section h3 {
+    font-size: 24px; /* 소제목 크기 증가 */
+    color: #2c3e50; /* 더 진한 색상 */
+    margin-bottom: 15px; /* 소제목과 리스트 사이의 여백 증가 */
+    border-bottom: 2px solid #4c60af; /* 소제목 하단에 경계선 추가 */
+    padding-bottom: 5px; /* 경계선과의 여백 */
+}
+
+.news-section article {
+    margin-bottom: 25px; /* 기사 간의 간격 증가 */
+    padding-bottom: 15px; /* 기사 하단 패딩 추가 */
+    border-bottom: 1px solid #e0e0e0; /* 기사 하단 경계선 추가 */
+    transition: transform 0.3s ease; /* 호버 애니메이션 추가 */
+}
+
+.news-section article:hover {
+    transform: translateX(10px); /* 살짝 오른쪽으로 이동하는 효과 */
+}
+
+.news-section article h4 {
+    font-size: 20px; /* 기사 제목 크기 증가 */
+    color: #2c3e50; /* 더 진한 색상 */
+    margin-bottom: 10px; /* 제목과 내용 사이의 여백 */
+}
+
+.news-section article p {
+    font-size: 16px; /* 문단 텍스트 크기 */
+    line-height: 1.6; /* 줄 간격 */
+    color: #666; /* 텍스트 색상 */
+    margin-bottom: 15px; /* 문단과 다음 섹션 사이의 여백 증가 */
+}
+
+.news-section article a {
+    font-size: 16px; /* 링크 텍스트 크기 */
+    color: #e74c3c; /* 강조 색상 변경 */
+    text-decoration: none;
+    font-weight: bold; /* 링크 텍스트 강조 */
+    transition: color 0.3s ease; /* 호버 애니메이션 추가 */
+}
+
+.news-section article a:hover {
+    text-decoration: underline;
+    color: #c0392b; /* 호버 시 색상 변경 */
+}
+
+.additional-info {
+    background: #998183; /* 추가 정보 배경색 */
+    padding: 20px; /* 추가 정보 내부 패딩 */
+    border-radius: 8px; /* 모서리 둥글게 처리 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 미묘한 그림자 효과 */
+    margin-bottom: 20px; /* 섹션 간의 간격 */
+}
+
+.additional-info h3 {
+    font-size: 20px; /* 소제목 크기 */
+    color: #333; /* 소제목 색상 */
+    margin-bottom: 10px; /* 소제목과 리스트 사이의 여백 */
+}
+
+.additional-info ul {
+    list-style-type: none; /* 리스트 스타일 제거 */
+    padding-left: 0; /* 리스트 왼쪽 패딩 제거 */
+}
+
+.additional-info li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.additional-info li:last-child {
+    border-bottom: none; /* 마지막 아이템의 하단 경계선 제거 */
+}
+
+.additional-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.custom-row {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.custom-row > .col-md-6 {
+    padding-left: 20px;
+    padding-right: 20px;
 }

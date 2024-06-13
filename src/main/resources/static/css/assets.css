@@ -81,8 +81,7 @@ body {
 }
 
 .asset-table thead {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007A52;
 }
 
 .asset-table th, .asset-table td {
@@ -103,9 +102,9 @@ body {
 }
 
 .asset-table th {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007A52;
     text-align: left;
+    color: #fff;
 }
 
 .asset-table td {
@@ -130,6 +129,7 @@ canvas {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 /*-------------------------------------------------------------*/
 
 .sidebar {
@@ -161,8 +161,8 @@ canvas {
 .sidebar ul li button {
     display: block;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007A52;
+    color: #fff;
     text-decoration: none;
     border-radius: 4px;
     text-align: center;
@@ -171,12 +171,12 @@ canvas {
 
 .sidebar ul li a:hover,
 .sidebar ul li button:hover {
-    background-color: #45a249;
+    background-color: #007A52;
 }
 
 .logout-button {
-    background-color: #d9534f !important; /* 로그아웃 버튼을 붉은색으로 표시 */
-    color: white;
+    background-color: #c9302c !important; /* 로그아웃 버튼을 붉은색으로 표시 */
+    color: #413f3f;
     border: none;
     cursor: pointer;
     padding: 10px;
@@ -188,25 +188,43 @@ canvas {
 .logout-button:hover {
     background-color: #c9302c;
 }
+
 /*------------------------------------*/
+
 #assetBarChart, #assetPieChart, #assetLineChart {
     margin: 20px 0;
 }
 
 #assetBarChart {
-    width: 900px !important;
-    height: 300px;
+    width: 520px !important;
+    height: 250px !important;
+    margin-left: -100px;
     box-sizing: border-box;
 }
 
 #assetPieChart {
-    width: 500px !important;
-    height: 500px !important;
+    margin-left: -50px;
+    width: 400px !important;
+    height: 400px !important;
     box-sizing: border-box;
 }
 
 #assetLineChart {
-    width: 900px !important;
+    width: 400px !important;
     height: 400px !important;
+    box-sizing: border-box;
+}
+
+/* 차트 컨테이너 */
+.chart-container {
+    display: flex;
+    justify-content: space-around; /* 차트 사이의 간격 균등 분배 */
+    flex-wrap: wrap; /* 작은 화면에서는 차트가 여러 줄로 배치될 수 있도록 */
+}
+
+.chart-item {
+    flex: 1; /* 모든 차트 아이템이 동일한 비율로 공간을 차지하도록 */
+    max-width: 33%; /* 각 차트 아이템의 최대 너비를 설정 */
+    padding: 10px;
     box-sizing: border-box;
 }

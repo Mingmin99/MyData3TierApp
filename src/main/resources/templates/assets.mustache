@@ -12,9 +12,10 @@
     <h1>{{username}}님의 자산 관리</h1>
     <nav class="navbar">
         <ul>
+            <li><a href="/">홈</a>
             <li><a href="/assets">자산 관리</a></li>
             <li><a href="/loans">대출 조건</a></li>
-            <li><a href="/notices">공지사항</a></li>
+            <li><a href="/notices">문의하기</a></li>
             <li><a href="/profile">마이 페이지</a></li>
         </ul>
     </nav>
@@ -22,6 +23,7 @@
 <div class="sidebar">
     <div class="sidebarTitle"><h2>메뉴</h2></div>
     <ul>
+        <li><a href="/">홈</a></li>
         <li><a href="/assets">자산 관리</a></li>
         <li><a href="/loans">대출 조건</a></li>
         <li><a href="/notices">공지사항</a></li>
@@ -51,15 +53,15 @@
 
     <h2>자산 분포</h2>
     <div class="chart-container">
-        <div>
+        <div class="chart-item">
             <canvas id="assetBarChart"></canvas>
         </div>
-        <div>
+        <div class="chart-item">
             <canvas id="assetPieChart"></canvas>
         </div>
-        <div>
-            <canvas id="assetLineChart"></canvas>
-        </div>
+<!--        <div class="chart-item">-->
+<!--            <canvas id="assetLineChart"></canvas>-->
+<!--        </div>-->
     </div>
 </div>
 

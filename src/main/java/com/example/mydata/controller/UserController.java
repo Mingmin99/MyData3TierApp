@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +26,7 @@ public class UserController {
         this.service = service;
     }
 
-
-    @RequestMapping("/")
+    @GetMapping("/")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
@@ -34,36 +34,30 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginMember(@RequestBody Map<String, String> loginData, HttpServletRequest request) {
+    public ResponseEntity<Map<String, Object>> loginMember(@RequestBody Map<String, String> loginData, HttpServletRequest request) {
         System.out.println("Received login data: " + loginData); // 디버깅 로그 추가
-        System.out.println("이게 로그인 데이터 컨트롤러" + loginData);
         User loginUser = service.loginUser(loginData);
-        System.out.println("그래서 로그인 된 사람이 누구냐면  컨트롤러" + loginUser);
 
         HttpSession session = request.getSession();
+        Map<String, Object> response = new HashMap<>();
         if (loginUser != null) {
-            System.out.println("그래서 로그인 된 사람이 누구냐면 아아디  컨트롤러" + loginUser.getId());
-            System.out.println("그래서 로그인 된 사람이 누구냐면 비밀번호 컨트롤러" + loginUser.getPassword());
-            System.out.println("그래서 로그인 된 사람이 누구냐면 이름 컨트롤러" + loginUser.getUsername());
             session.setAttribute("username", loginUser.getUsername());
             session.setAttribute("userid", loginUser.getId());
 
-            HashMap<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("username", loginUser.getUsername());
             response.put("userid", loginUser.getId());
             return ResponseEntity.ok(response);
         } else {
-            HashMap<String, Object> response = new HashMap<>();
             response.put("success", false);
             response.put("message", "로그인 실패");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(HttpSession session) {
         session.invalidate();
         return ResponseEntity.ok().build();
     }
-
 }

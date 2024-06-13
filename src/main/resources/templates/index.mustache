@@ -6,10 +6,11 @@
     <title>MyData 서비스</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="header">
-    <h1>MyData 자산 관리 및 대출 조건 비교</h1>
+    <h1>Min MyData 자산 관리 및 대출 조건 비교</h1>
     <nav class="navbar">
         <ul>
             <li><a href="/assets">자산 관리</a></li>
@@ -29,18 +30,95 @@
     </form>
 </div>
 <div class="main-content">
-    <h2>서비스 소개</h2>
-    <p>MyData 서비스는 개인의 자산 관리와 최적의 대출 조건을 비교하여 제공하는 플랫폼입니다. 여기에서는 사용자의 재정 상태를 파악하고, 최적의 대출 옵션을 찾을 수 있도록 도와줍니다.</p>
-    <div class="additional-info">
-        <h3>특징 및 혜택</h3>
-        <ul>
-            <li>실시간 자산 관리</li>
-            <li>다양한 대출 조건 비교</li>
-            <li>개인 맞춤형 금융 조언</li>
-        </ul>
+    <img id="homemydata-image" src="/image/homemydata.png" alt="homemydata Icon">
+
+
+    <!--    메뉴바-->
+    <div class="menu-bar">
+        <div class="row">
+            <div class="col">
+                <img class="menu-icon" src="/image/introduce.svg" alt="아이콘 1">
+                <a class="menu-item" href="/introduce">
+                    서비스 소개
+                </a>
+            </div>
+            <div class="col">
+                <img class="menu-icon" src="/image/assets.svg" alt="아이콘 2">
+                <a class="menu-item" href="/assets">
+                    자산관리
+                </a>
+            </div>
+
+            <div class="col">
+                <img class="menu-icon" src="/image/loan.svg" alt="아이콘 3">
+                <a class="menu-item" href="/loans">
+                    대출관리
+                </a>
+            </div>
+            <div class="col">
+                <img class="menu-icon" src="/image/mypage.svg" alt="아이콘 3">
+                <a class="menu-item" href="/profile">
+                    마이페이지
+                </a>
+            </div>
+        </div>
     </div>
+    <div class="news-section">
+        <h3>최신 마이데이터 뉴스</h3>
+        <article>
+            <h4>마이데이터 서비스 도입 효과</h4>
+            <p>마이데이터 서비스가 도입된 이후 개인 자산 관리가 더욱 효율적으로 변화했습니다...</p>
+            <a href="#">더 읽기</a>
+        </article>
+        <article>
+            <h4>최신 금융 트렌드</h4>
+            <p>최신 금융 트렌드와 마이데이터의 역할에 대한 기사...</p>
+            <a href="#">더 읽기</a>
+        </article>
+    </div>
+    <div class="container mt-4">
+        <div class="row custom-row">
+            <div class="col-md-6">
+                <div class="additional-info">
+                    <h3>특징 및 혜택</h3>
+                    <ul>
+                        <li>실시간 자산 관리</li>
+                        <li>다양한 대출 조건 비교</li>
+                        <li>개인 맞춤형 금융 조언</li>
+                    </ul>
+                </div>
+            </div>
+<!--            <div class="col-md-6">-->
+<!--                <div class="additional-info">-->
+<!--                    <h3>추가 혜택</h3>-->
+<!--                    <ul>-->
+<!--                        <li>금융 상품 추천</li>-->
+<!--                        <li>자산 포트폴리오 분석</li>-->
+<!--                        <li>전문가 상담 서비스</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+
+
+    <div class="interest-rates">
+        <h3>은행별 이자율 비교</h3>
+        <img id="interest-rate-chart" src="/image/은행별 이자율 비교.png" alt="은행별 이자율 차트" height="400px">
+    </div>
+
+
 </div>
 <div id="welcome-area" style="display: none;">
+    <img id="welcome-image" src="/image/user.svg" alt="User Icon">
+    <h1 id="welcome-message"></h1>
+</div>
+<footer>
+    <p>&copy; 2024 MyData 서비스. All rights reserved.</p>
+</footer>
+
+<div id="welcome-area" style="display: none;">
+    <img id="welcome-image" src="/image/user.svg" alt="User Icon">
     <h1 id="welcome-message"></h1>
 </div>
 <script>
@@ -60,7 +138,6 @@
                 data: JSON.stringify(loginData),
                 success: function (response) {
                     if (response.success) {
-                        console.log("이것이 로그인 데이터인디요" + loginData)
                         sessionStorage.setItem("username", response.username); // 사용자 이름 저장
                         $('#login-form').hide(); // 로그인 폼 숨기기
                         $('#welcome-message').text(response.username + '님, 환영합니다!');
@@ -79,6 +156,7 @@
         if (sessionStorage.getItem("username")) {
             $('#login-form').hide(); // 로그인 폼 숨기기
             $('#welcome-message').text(sessionStorage.getItem("username") + '님, 환영합니다!');
+            $('#welcome-image').show(); // 이미지 보여주기
             $('#welcome-area').appendTo('#login-form-container').show(); // 환영 메시지 보여주기
         }
     });
