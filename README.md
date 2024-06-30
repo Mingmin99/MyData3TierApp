@@ -30,7 +30,7 @@
 3. 모니터링 설정 실습 및 대시보드 제공
 4. RTO : 4시간 RPO : CDP (무중단 데이터 보호)
 
-<img src="img/customer_requirements.jpeg" width="500px"/>
+<img src="img/customer_requirements.jpeg" width="1000px"/>
 
 ## 🧩 시스템 아키텍처
 
