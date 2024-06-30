@@ -1,6 +1,6 @@
 # 💻 My Data 대출 비교 서비스와 SIEM 시스템 통합 프로젝트
 
-<img src="img/ppt_title.jpeg"width="1000px"/>
+<img src="img/ppt_title.jpeg" width="1000px"/>
 
 ## ⌛️ 프로젝트 시나리오
 
@@ -34,15 +34,15 @@
 
 ## 🧩 시스템 아키텍처
 
-<img src="img/sys_arch.jpeg"width="1000px"/>
+<img src="img/sys_arch.jpeg" width="1000px"/>
 
 ## 👁️ 웹 애플리케이션 구현
 
-<img src="img/app_dev.jpeg"width="1000px"/>
+<img src="img/app_dev.jpeg" width="1000px"/>
 
 ## 🔐 SIEM
 
-<img src="img/SIEM.jpeg"width="1000px"/>
+<img src="img/SIEM.jpeg" width="1000px"/>
 
 ## 🖥️ 장비목록
 
@@ -76,7 +76,7 @@
 
 ## 📂 결과
 
-<img src="img/result.jpeg"width="1000px"/>
+<img src="img/result.jpeg" width="1000px"/>
 
 - **안정적인 인프라 구축**: 서버리스 3-Tier 구조를 통한 고가용성 및 자동 확장 기능 제공
 - **보안 강화**: ISMS-P 인증 기준을 충족하는 SIEM 보안 솔루션 구축
