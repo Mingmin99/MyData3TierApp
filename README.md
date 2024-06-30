@@ -2,6 +2,8 @@
 
 <img src="img/ppt_title.jpeg" width="1000px"/>
 
+<br>
+
 ## ⌛️ 프로젝트 시나리오
 
 대기업 A에서는 새로운 MyData 대출 조건 비교 서비스를 런칭하고자 합니다.
@@ -15,6 +17,9 @@
 또한, 시스템 리소스에 대한 메트릭과 관련 로그를 취합한 보안 모니터링을 통해 서비스의 보안을 향상시키고자 합니다.
 
 궁극적으로, ISMS-P 인증 기준에 최대한 부합하도록 보안 인증을 강화하고 안정적인 인프라를 운영할 계획입니다.
+
+<br>
+<br>
 
 ## 🔥 구현 요구사항
 
@@ -32,23 +37,25 @@
 
 <img src="img/customer_requirements.jpeg" width="1000px"/>
 
+<br><br>
+
 ## 🧩 시스템 아키텍처
 
 <img src="img/sys_arch.png" width="1000px"/>
 
-
+<br>
 
 ## 👁️ 웹 애플리케이션 구현
 
 <img src="img/app_dev.jpeg" width="1000px"/>
 
-
+<br>
 
 ## 🔐 SIEM
 
 <img src="img/SIEM.jpeg" width="1000px"/>
 
-
+<br>
 
 ## 🖥️ 장비목록
 
@@ -65,7 +72,7 @@
 | Version Control | GitHub |
 | Other AWS Services | ECR, Lambda, SNS, EventBridge |
 
-
+<br>
 
 ## 🪡 구현과정
 
@@ -76,7 +83,7 @@
 - **실시간 모니터링 및 SIEM 시스템 구축**: CloudWatch, Prometheus, Grafana를 통한 실시간 모니터링 및 SIEM 시스템 통합
 - **자동 백업 및 장애 복구**: RTO 4시간, RPO CDP를 통한 무중단 데이터 보호 및 복구 구현
 
-  
+  <br>
 
 ## 💡 담당업무
 
@@ -84,7 +91,7 @@
 - AWS Fargate 및 Amazon Aurora를 사용한 3-Tier 아키텍처 인프라 구축
 - Java(Spring Boot) 기반의 서비스 개발
 
-
+<br>
   
 
 ## 📂 결과
@@ -96,7 +103,7 @@
 - **운영 효율성**: CI/CD 파이프라인을 통한 자동화된 배포 및 운영 효율성 증대
 - **중단 최소화 서비스 제공**: RTO 4시간, RPO CDP를 통한 무중단 데이터 보호 및 복구 구현
 
-
+<br><br>
 
 ## 🏷️ 느낀점
 
@@ -125,6 +132,7 @@ RTO 4시간, RPO CDP를 통한 무중단 데이터 보호 및 복구 시스템�
 이 프로젝트를 통해 클라우드 컴퓨팅의 강력한 유연성과 확장성, 보안 강화, 자동화된 CI/CD 파이프라인 구축, 실시간 모니터링, 자동 백업 및 장애 복구의 중요성을 깊이 이해하게 되었습니다. 이러한 경험은 앞으로 더욱 복잡하고 규모가 큰 프로젝트에서도 안정적이고 효율적인 시스템을 구축하는 데 큰 도움이 될 것이라고 생각합니다.
 
 
+<br><br>
 
 # 본인 소개
 
