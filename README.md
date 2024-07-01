@@ -105,11 +105,11 @@
 
 <br><br>
 
-## 📂 발표자료
+## 🗣️  발표자료
 
-
-[My Data 대출 비교 서비스와 SIEM 시스템 통합 프로젝트 발표 ppt](/img/최종발표PPT_최민영.pptx)
-[SIEM 프로젝트 발표 ppt](/img/SIEM-팀프로젝트.pptx)
+🗣️ [My Data 대출 비교 서비스와 SIEM 시스템 통합 프로젝트 발표 ppt](/img/최종발표PPT_최민영.pptx)
+<br>
+🗣️ [SIEM 프로젝트 발표 ppt](/img/SIEM-팀프로젝트.pptx)
 
 ## 🏷️ 느낀점
 
